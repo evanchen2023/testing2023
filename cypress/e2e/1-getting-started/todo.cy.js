@@ -79,6 +79,7 @@ describe('example to-do app', () => {
       .should('have.class', 'completed')
   })
 
+  //testing for second change at github:
   //Evan's first testing case (12/05):
   it('number 10 + 15 should be equal to 25', () => {
     expect(10 + 15).to.eq(25);
