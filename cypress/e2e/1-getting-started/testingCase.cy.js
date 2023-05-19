@@ -4,7 +4,7 @@
 //3）顶部导航在页面始终文娱页面的顶部位置。
 //4) test log in
 
-describe('front page testing', () => {
+describe('Front page testing', () => {
     beforeEach(() => {
       cy.visit('https://cms-lyart.vercel.app/')
     })
@@ -63,4 +63,103 @@ describe('Testing Login and localStorage', () => {
     });
 
     
+})
+
+describe('Login form testing', () => {
+    beforeEach(() => {
+        cy.visit('https://cms-lyart.vercel.app/login');
+    })
+
+    it('Deault shows at Student login form', () => {
+        cy.get('span.ant-radio-button')
+          .should("be.visible");     
+    })
+
+    it('Should have 3 radio button at login form', () => {   //不知道为何这个运行不了： label在input上级
+        cy.get('input[type=radio]').should('have.length', 3);
+        //cy,get('label').contains('Student').should("be.visible")
+        //cy,get('label').contains('Teacher').should("be.visible")
+        //cy,get('label').contains('Manager').should("be.visible")      
+    })
+
+    it('3 login should be display', () => {  
+        cy.get('label').contains('Student').should("be.visible")
+        cy.get('label').contains('Teacher').should("be.visible")
+        cy.get('label').contains('Manager').should("be.visible")
+    })
+    
+
+    ////如何测试鼠标移到Teacher radio button然后字体显示为蓝色
+    /* it('Teacher button change color', () => {
+        cy.get('span:contains("Teacher")')
+          .should("be.visible")
+          .trigger('mouseover')
+          .get('span:contains("Teacher")')
+          .should('have.css','color', '')
+    }) */
+
+    it('Test Teacher login', () => {                  //如何测试在鼠标移动到Teacher or Manager label，是可选的： check hrel？
+        cy.get('label').contains('Teacher').click()   
+        cy.get('#login_email').type('teacher@admin.com');
+        cy.get('#login_password').type('111111');
+        cy.get('button').click();      
+        cy.url().should('include', '/dashboard'); 
+    });
+
+    it('Test Manager login', () => {                  
+        cy.get('label').contains('Manager').click()   
+        cy.get('#login_email').type('Manager@admin.com');
+        cy.get('#login_password').type('111111');
+        cy.get('button').click();      
+        cy.url().should('include', '/dashboard'); 
+    });
+
+    it('Testing Sign up display on this form', () => {
+        cy.get('div.ant-col.ant-col-sm-24').contains('Sign up').should("be.visible")
+        
+    })
+
+    it('Testing Sign up have link', () => {
+        cy.get('div.ant-space.ant-space-horizontal')
+          .get('a').first().should('have.attr', 'href');
+    })
+
+    it('Remember me button can click', () => {
+      cy.get('#login_remember[type="checkbox"]').check()
+    })
+})
+
+describe('Sign up form testing', () => {
+    beforeEach(() => {
+        cy.visit('https://cms-lyart.vercel.app/signup');
+    })
+
+    it('should displey 3 label', () => {
+        cy.get('div.ant-radio-group')
+          .children('label')
+          .should('have.length', 3);
+    })
+
+    it('shoudl display 3 radio button for role', () => {
+      cy.get('[type="radio"]').check();
+    })
+
+    it('Show error when no info inputed', () => {
+        cy.get('form').submit();
+        
+        cy.get('div[role="alert"]').contains("'email' is required")
+          .should('be.visible');
+        
+        cy.get('div[role="alert"]').contains("'role' is required")
+          .should('be.visible');
+        
+        cy.get('div[role="alert"]').contains("'password' is required")
+          .should('be.visible');
+        
+        cy.get('div[role="alert"]').contains("'confirmPassword' is required")
+          .should('be.visible');
+    })
+
+    
+
 })
