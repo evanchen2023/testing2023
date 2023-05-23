@@ -16,8 +16,11 @@ describe('login api', () => {
         }).then((response) => {
 
             expect(response.status).to.eq(201);
-            expect(response.data.role).eq('student');
-            expect(response.data).have.property('token');
+            expect(response.body.msg).to.eq('success');
+            expect(response.body.data.role).to.eq('student');
+            //！！！！！以下为错误范例：必须包含body
+            //expect(response.data.role).eq('student');
+            //expect(response.data).have.property('token');
         })
     })
 })
