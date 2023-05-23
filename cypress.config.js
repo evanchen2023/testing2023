@@ -8,6 +8,7 @@ module.exports = defineConfig({
     },
   },
   "chromeWebSecurity": false //add this param to your config file
+  
 });
 
 /* module.exports = defineConfig({

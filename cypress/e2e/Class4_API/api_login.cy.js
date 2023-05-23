@@ -1,4 +1,4 @@
-import {AES} from 'cypress-js';
+import {AES} from 'crypto-js';
 
 describe('login api', () => {
     it('should log in with student acc', () => {
@@ -15,9 +15,9 @@ describe('login api', () => {
             }
         }).then((response) => {
 
-            expect(response.status).to.eq(200);
-            expect(response.body.role).eq('student');
-            expect(response.body).have.property('token');
+            expect(response.status).to.eq(201);
+            expect(response.data.role).eq('student');
+            expect(response.data).have.property('token');
         })
     })
 })
