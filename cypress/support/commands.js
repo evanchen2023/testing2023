@@ -23,3 +23,32 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('managerlogin', ()=> {
+    const Memail = 'manager@admin.com';
+    const password = '111111';
+    const loginPath = '/login';
+    cy.visit(loginPath);
+
+    cy.get('label').contains('Manager').click();
+    cy.get('#login_email').type(Memail);
+    cy.get('#login_password').type(password);
+    cy.get('button').click(); 
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@ describe('Student List Api', () => {
         it('should retrieve student list', () => {
             cy.request({
                 method: 'GET',
-                url: 'http://cms.chtoma.com/api/students?limit=20&page=1',
+                url: 'http://cms.chtoma.com/api/students/?limit=20&page=1',//?limit=20&page=1
                 qs: {
                     limit: 20,
                     page: 1
