@@ -18,17 +18,19 @@ describe('Dashboard visual testing', () => {
           threshold: 0.2,
           thresholdType: 'pixels',
         });
-
-        it('Distribution', () => {
-            cy.get('.ant-card').eq(3).should('be.visible');
-            cy.get('.ant-card').eq(3).matchImageSnapshot();
-          });
+      });
+      
+      it('Distribution', () => {
+            cy.get('.ant-card').eq(2).should('be.visible');
+            cy.get('.ant-card').eq(2).toMatchImageSnapshot();
+      });
         
-          it('Types', () => {
-            cy.get('.ant-card').eq(4).should('be.visible');
-            cy.get('.ant-card').eq(4).matchImageSnapshot();
-          });
-    });
+      it('Types', () => {
+            cy.get('.ant-card').eq(3).should('be.visible');
+            cy.get('.ant-card').eq(3).toMatchImageSnapshot();
+      });
+
+    
 
 
 })

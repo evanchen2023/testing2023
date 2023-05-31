@@ -1,0 +1,24 @@
+
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+      "cover": "https://www.google.com/url?sa=i&url=https%3A%2F%2Felearningindustry.com%2Fways-how-improve-online-course-covers-design&psig=AOvVaw3acCemZYucVczk9n2076zI&ust=1685568563278000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCOD4pq7-nf8CFQAAAAAdAAAAABAE",
+      "ctime": "2023-05-31 15:34:25",
+      "detail": "no",
+      "duration": 2,
+      "durationUnit": 4,
+      "id": 8,
+      "maxStudents": 10,
+      "name": "cypress测试课程",
+      "price": 199,
+      "scheduleId": 1,
+      "star": 3,
+      "startTime": "2023-07-01",
+      "status": 1,
+      "teacherId": 1,
+      "teacherName": "Evan",
+      "typeId": 14,
+      "uid": "TEST"
+    }
+  }
